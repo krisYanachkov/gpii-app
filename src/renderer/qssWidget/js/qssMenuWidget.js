@@ -29,7 +29,10 @@
         gradeNames: ["fluid.viewComponent", "gpii.psp.heightObservable", "gpii.psp.selectorsTextRenderer"],
         model: {
             disabled: false,
-            setting: {}
+            setting: {},
+            messages: {
+                footerTip: "{that}.model.setting.widget.footerTip",
+            }
         },
         modelListeners: {
             setting: {
@@ -41,7 +44,8 @@
         selectors: {
             heightListenerContainer: ".flc-qssMenuWidget-controls",
             menuControlsWrapper: ".flc-qssMenuWidget-controlsWrapper",
-            menuControls: ".flc-qssMenuWidget-controls"
+            menuControls: ".flc-qssMenuWidget-controls",
+            footerTip: ".flc-qssMenuWidget-footerTip"
         },
         enableRichText: true,
         activationParams: {},

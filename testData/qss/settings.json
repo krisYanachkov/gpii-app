@@ -1,5 +1,29 @@
 [
     {
+        "path": "http://registry\\.gpii\\.net/common/colorVision",
+        "schema": {
+            "type": "string",
+            "keys": [
+                "standard-colors",
+                "green-weak",
+                "red-weak",
+                "tritanomaly"
+            ],
+            "default": "standard-colors"
+        },
+        "buttonTypes": ["largeButton", "settingButton"],
+        "tabindex": 0,
+        "messageKey": "common-colorVision",
+        "value": "standard-colors",
+        "styles": {
+            "regular-contrast": {
+                "background": "#ffffff",
+                "color": "#0073bd",
+                "border-color": "#0073bd"
+            }
+        },
+        "learnMoreLink": "https://morphic.world/help/qsshelp#color-vision"
+    }, {
         "path": "screenCapture",
         "schema": {
             "type": "screenCapture",
