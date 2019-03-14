@@ -94,7 +94,8 @@
                                 "{menu}",
                                 "{that}.container",
                                 "{arguments}.0", // value
-                                "{arguments}.1" // keyboardEvent
+                                "{arguments}.1", // keyboardEvent
+                                "{menu}.model.setting.schema.closeOnSelect"
                             ]
                         }
                     },
@@ -199,16 +200,27 @@
      * @param {Any} value - The new value of the setting in the QSS menu.
      * @param {KeyboardEvent} keyboardEvent - The keyboard event (if any) that led to the
      * change in the setting's value.
+     * @param {Boolean} closeOnSelect - Flag to know if the menu must be closed on select
      */
-    gpii.qssWidget.menu.updateValue = function (that, menu, container, value, keyboardEvent) {
+    gpii.qssWidget.menu.updateValue = function (that, menu, container, value, keyboardEvent, closeOnSelect) {
+        // we are closing the menu by default
+        var closeNow = true;
+
         if (!that.model.disabled && that.model.value !== value) {
             that.applier.change("value", value, null, "settingAlter");
 
-            // Disable interactions with the window as it is about to close
-            that.applier.change("disabled", true);
-            container.addClass(that.options.styles.disabled);
+            // Not closing the menu only if we have the closeOnSelect flag in the schema and its set to false
+            if (fluid.isValue(closeOnSelect) && closeOnSelect == false) {
+                closeNow = false;
+            }
 
-            menu.close(keyboardEvent);
+            // Disable interactions with the window as it is about to close
+            if (closeNow) {
+                that.applier.change("disabled", true);
+                container.addClass(that.options.styles.disabled);
+                // closing the menu
+                menu.close(keyboardEvent);
+            }
         }
     };
 

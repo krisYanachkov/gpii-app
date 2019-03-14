@@ -9,7 +9,8 @@
                 "red-weak",
                 "tritanomaly"
             ],
-            "default": "standard-colors"
+            "default": "standard-colors",
+            "closeOnSelect": false
         },
         "buttonTypes": ["largeButton", "settingButton"],
         "tabindex": 0,
